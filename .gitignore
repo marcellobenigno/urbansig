@@ -276,4 +276,5 @@ yarn-error.log
 .AppleDouble
 .LSOverride
 
-# End of https://www.toptal.com/developers/gitignore/api/django,python,vuejs
+### WebStorm ###
+.idea
