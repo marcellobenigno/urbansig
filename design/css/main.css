@@ -1,0 +1,16 @@
+#jumpo-index {
+    background: rgba(204, 204, 204, 0.2);
+}
+
+#map {
+    width: 100%;
+    min-height: calc(100vh - 200px);
+}
+
+.card-body {
+    padding: 0;
+}
+
+#btn-search {
+    margin-top: 4px;
+}
