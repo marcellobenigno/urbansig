@@ -7,10 +7,15 @@
     min-height: calc(100vh - 200px);
 }
 
-.card-body {
+.map-card-body {
+    margin: 0;
     padding: 0;
 }
 
-#btn-search {
-    margin-top: 4px;
+.btn-search {
+    margin-top: 6px;
+}
+
+#form-login {
+    padding: 2rem;
 }

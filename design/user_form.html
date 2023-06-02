@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UrbanSIG - Mapa</title>
+    <title>UrbanSIG - Editar Usuário</title>
     <link rel="stylesheet" href="vendor/bootstrap-5.3.0-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
-    <link rel="stylesheet" href="vendor/leaflet/plugins/zoom_to_home/leaflet.zoomhome.css">
     <script src="vendor/fontawesome/f200917737.js"></script>
 </head>
 <body>
@@ -31,7 +29,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="mapa.html">
+                    <a class="nav-link" href="mapa.html">
                         <i class="fa-solid fa-map"></i>
                         Mapa
                     </a>
@@ -72,74 +70,49 @@
     </div>
 </nav>
 
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12 mt-4">
             <div class="card">
                 <div class="card-header">
-
-                    <button class="btn btn-light" type="button" data-bs-toggle="offcanvas"
-                            data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">
-                        <i class="fa-solid fa-magnifying-glass-location"></i>
-                        Pesquisar
-                    </button>
-
+                    <i class="fa-solid fa-edit"></i>
+                    Alterar Senha
                 </div>
-                <div class="card-body map-card-body">
-                    <div id="map"></div>
+                <div class="card-body">
+                    <div class="row">
+                        <form class=" m-4">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="senha1" class="form-label">Senha Antiga</label>
+                                    <input type="password" class="form-control" id="senha1"
+                                           aria-describedby="senha1Help">
+                                    <div id="senha1Help" class="form-text">Digite o Número do Setor</div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label for="senha2" class="form-label">Senha Antiga</label>
+                                    <input type="password" class="form-control" id="senha2"
+                                           aria-describedby="senha2Help">
+                                    <div id="senha2Help" class="form-text">Digite o Número do Setor</div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="pt-4">
+                                        <button type="button" class="btn btn-primary btn-search">
+                                            <i class="fa-solid fa-floppy-disk"></i>
+                                            Salvar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-
-<div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
-    <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasBottomLabel">
-            <i class="fa-solid fa-magnifying-glass-location"></i>
-            Pesquisar
-        </h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body small">
-        <form>
-            <div class="row">
-                <div class="col-md-3">
-                    <label for="setor" class="form-label">Setor</label>
-                    <input type="text" class="form-control" id="setor" aria-describedby="setorHelp">
-                    <div id="setorHelp" class="form-text">Digite o Número do Setor</div>
-                </div>
-                <div class="col-md-3">
-                    <label for="quadra" class="form-label">Quadra</label>
-                    <input type="text" class="form-control" id="quadra" aria-describedby="quadraHelp">
-                    <div id="quadraHelp" class="form-text">Digite o Número da Quadra</div>
-                </div>
-                <div class="col-md-3">
-                    <label for="lote" class="form-label">Lote</label>
-                    <input type="text" class="form-control" id="lote" aria-describedby="loteHelp">
-                    <div id="loteHelp" class="form-text">Digite o Número do Lote</div>
-                </div>
-                <div class="col-md-3">
-                    <div class="pt-4">
-                        <button type="button" class="btn btn-primary btn-search">
-                            <i class="fa-solid fa-magnifying-glass-location"></i>
-                            Limpar
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-
-</div>
-</div>
-
-
 <script src="vendor/bootstrap-5.3.0-dist/js/bootstrap.bundle.min.js"></script>
-<script src="vendor/leaflet/leaflet.js"></script>
-<script src="vendor/leaflet/plugins/zoom_to_home/leaflet.zoomhome.js"></script>
-<script src="js/mainmap.js"></script>
 </body>
 </html>
