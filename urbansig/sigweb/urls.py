@@ -2,8 +2,8 @@ from django.urls import path
 
 from . import views as v
 
-app_name = 'core'
+app_name = 'sigweb'
 
 urlpatterns = [
-    path('', v.index, name='index'),
+    path('', v.mapa, name='mapa'),
 ]

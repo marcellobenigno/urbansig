@@ -2,8 +2,8 @@ from django.urls import path
 
 from . import views as v
 
-app_name = 'core'
+app_name = 'cadastro'
 
 urlpatterns = [
-    path('', v.index, name='index'),
+    path('', v.imovel_list, name='imovel_list'),
 ]
