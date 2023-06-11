@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # GeoDjango
     'django.contrib.gis',
-
+    # Third Apps
+    'bootstrap5',
     # Apps
     'urbansig.core',
     'urbansig.cadastro',
@@ -125,3 +126,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+# ------------- Auth -------------
+LOGIN_URL = 'seguranca:login'
+LOGIN_REDIRECT_URL = 'cadastro:imovel_list'

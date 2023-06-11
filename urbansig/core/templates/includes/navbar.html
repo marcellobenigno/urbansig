@@ -39,8 +39,8 @@
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link"
-                           href="">
+                        <a class="nav-link {% if url_name == 'login' %}active{% endif %}"
+                           href="{% url 'seguranca:login' %}">
                             <i class="fa-solid fa-right-to-bracket"></i>
                             Login
                         </a>

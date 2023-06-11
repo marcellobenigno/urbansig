@@ -1,5 +1,4 @@
-{% load static %}
-
+{% load static bootstrap5 %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -16,10 +15,19 @@
 <body>
 {% include 'includes/navbar.html' %}
 
+<div id="msg">
+    {% bootstrap_messages %}
+</div>
+
 {% block content %}
 {% endblock content %}
 
+<script src="{% static 'vendor/jquery/jquery-3.3.1.min.js' %}"></script>
 <script src="{% static 'vendor/bootstrap-5.3.0-dist/js/bootstrap.bundle.min.js' %}"></script>
+
+<script>
+    $('#msg').show().delay(5000).fadeOut();
+</script>
 
 {% block extra_js %}
 {% endblock extra_js %}
