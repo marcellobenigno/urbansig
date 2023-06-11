@@ -6,4 +6,5 @@ app_name = 'seguranca'
 
 urlpatterns = [
     path('login/', v.login, name='login'),
+    path('logout/', v.logout, name='logout'),
 ]
