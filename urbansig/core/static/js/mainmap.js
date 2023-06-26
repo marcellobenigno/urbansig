@@ -1,45 +1,74 @@
-const cities = L.layerGroup();
+const geoserverWMS = $('#geoserver').val() + 'wms/';
 
-const mLittleton = L.marker([39.61, -105.02]).bindPopup('This is Littleton, CO.').addTo(cities);
-const mDenver = L.marker([39.74, -104.99]).bindPopup('This is Denver, CO.').addTo(cities);
-const mAurora = L.marker([39.73, -104.8]).bindPopup('This is Aurora, CO.').addTo(cities);
-const mGolden = L.marker([39.77, -105.23]).bindPopup('This is Golden, CO.').addTo(cities);
+const setor = L.tileLayer.wms(geoserverWMS, {
+    layers: 'urbansig:cadastro_setor',
+    format: 'image/png',
+    transparent: true,
+    version: '1.1.0',
+    maxZoom: 20,
+    zIndex: 1,
+    attribution: 'Prefeitura Municipal de Cassilândia'
+});
 
-const mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>';
-const mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
+const quadra = L.tileLayer.wms(geoserverWMS, {
+    layers: 'urbansig:cadastro_quadra',
+    format: 'image/png',
+    transparent: true,
+    version: '1.1.0',
+    maxZoom: 20,
+    zIndex: 1,
+    attribution: 'Prefeitura Municipal de Cassilândia'
+});
 
-const streets = L.tileLayer(mbUrl, {id: 'mapbox/streets-v11', tileSize: 512, zoomOffset: -1, attribution: mbAttr});
+const lote = L.tileLayer.wms(geoserverWMS, {
+    layers: 'urbansig:cadastro_lote',
+    format: 'image/png',
+    transparent: true,
+    version: '1.1.0',
+    maxZoom: 20,
+    zIndex: 1,
+    attribution: 'Prefeitura Municipal de Cassilândia'
+});
 
-const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+
+const googleStreets = L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+    maxZoom: 20,
+    subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+    attribution: 'Google Maps'
+});
+
+const googleSat = L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+    maxZoom: 20,
+    subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+    attribution: 'Google Maps'
+});
+
+const googleTerrain = L.tileLayer('https://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}', {
+    maxZoom: 20,
+    subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+    attribution: 'Google Maps'
 });
 
 const map = L.map('map', {
-    center: [39.73, -104.99],
-    zoom: 10,
+    center: [-19.1151240, -51.7317223],
+    zoom: 15,
     zoomControl: false,
-    layers: [osm, cities]
+    layers: [googleSat, lote, quadra, setor]
 });
 
 const baseLayers = {
-    'OpenStreetMap': osm,
-    'Streets': streets
+    'Google Satélite': googleSat,
+    'Google Streets': googleStreets,
+    'Google Terreno': googleTerrain
 };
 
 const overlays = {
-    'Cities': cities
+    'Lotes': lote,
+    'Quadras': quadra,
+    'Setores': setor,
 };
 
 const layerControl = L.control.layers(baseLayers, overlays).addTo(map);
-const crownHill = L.marker([39.75, -105.09]).bindPopup('This is Crown Hill Park.');
-const rubyHill = L.marker([39.68, -105.00]).bindPopup('This is Ruby Hill Park.');
-
-const parks = L.layerGroup([crownHill, rubyHill]);
-
-const satellite = L.tileLayer(mbUrl, {id: 'mapbox/satellite-v9', tileSize: 512, zoomOffset: -1, attribution: mbAttr});
-layerControl.addBaseLayer(satellite, 'Satellite');
-layerControl.addOverlay(parks, 'Parks');
 
 const zoomHome = L.Control.zoomHome();
 zoomHome.addTo(map);

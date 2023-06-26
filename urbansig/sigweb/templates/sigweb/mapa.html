@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% load static %}
+{% load static core_tags %}
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'vendor/leaflet/leaflet.css' %}">
@@ -24,6 +24,7 @@
                     </div>
                     <div class="card-body map-card-body">
                         <div id="map"></div>
+                        <input type="hidden" id="geoserver" value="{% settings_value "GEOSERVER" %}">
                     </div>
                 </div>
             </div>

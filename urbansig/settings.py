@@ -131,3 +131,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = 'seguranca:login'
 LOGIN_REDIRECT_URL = 'cadastro:imovel_list'
 LOGOUT_REDIRECT_URL = 'core:index'
+
+# GEOSERVER
+GEOSERVER = config('GEOSERVER')
