@@ -1,4 +1,7 @@
 const geoserverWMS = $('#geoserver').val() + 'wms/';
+const clickUrl = $('#click').val().replace('0/0/', '');
+
+console.log(clickUrl)
 
 const setor = L.tileLayer.wms(geoserverWMS, {
     layers: 'urbansig:cadastro_setor',
@@ -72,3 +75,30 @@ const layerControl = L.control.layers(baseLayers, overlays).addTo(map);
 
 const zoomHome = L.Control.zoomHome();
 zoomHome.addTo(map);
+
+var popup = L.popup();
+
+
+function onMapClick(e) {
+    let url = `${clickUrl}${e.latlng.lng}/${e.latlng.lat}/`
+
+    axios.get(url)
+        .then(function (response) {
+            // handle success
+            if (!response.data.includes('****')) {
+                popup
+                    .setLatLng(e.latlng)
+                    .setContent(response.data)
+                    .openOn(map);
+            }
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+        })
+        .finally(function () {
+            // always executed
+        });
+}
+
+map.on('click', onMapClick);

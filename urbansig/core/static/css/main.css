@@ -19,3 +19,13 @@
 #form-login {
     padding: 2rem;
 }
+
+.leaflet-popup-content-wrapper ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.leaflet-popup-content-wrapper span {
+    font-weight: bold;
+}

@@ -42,6 +42,15 @@ class Lote(BaseModel):
     def __str__(self):
         return self.num_lote
 
+    def popup(self):
+        popup = "<ul>"
+        popup += f"<li><span>Número do Lote</span>: {self.num_lote}"
+        popup += f"<li><span>Situação</span>: {self.get_situacao_display()}</li>"
+        popup += f"<li><span>Número da Quadra</span>: {self.quadra}</li>"
+        popup += f"<li><span>Número do Setor</span>: {self.quadra.setor}</li>"
+        popup += "</ul>"
+        return popup
+
     class Meta:
         verbose_name = 'Lote'
         verbose_name_plural = 'Lotes'

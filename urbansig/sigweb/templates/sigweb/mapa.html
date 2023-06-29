@@ -25,6 +25,7 @@
                     <div class="card-body map-card-body">
                         <div id="map"></div>
                         <input type="hidden" id="geoserver" value="{% settings_value "GEOSERVER" %}">
+                        <input type="hidden" id="click" value="{% url 'sigweb:click_map' 0 0 %}">
                     </div>
                 </div>
             </div>
@@ -75,6 +76,7 @@
 
 
 {% block extra_js %}
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="{% static 'vendor/leaflet/leaflet.js' %}"></script>
     <script src="{% static 'vendor/leaflet/plugins/zoom_to_home/leaflet.zoomhome.js' %}"></script>
     <script src="{% static 'js/mainmap.js' %}"></script>
