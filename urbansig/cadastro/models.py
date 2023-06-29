@@ -10,6 +10,10 @@ class Setor(BaseModel):
     def __str__(self):
         return self.num_setor
 
+    def bounds(self):
+        xmin, ymin, xmax, ymax = self.geom.extent
+        return [[ymin, xmin], [ymax, xmax]]
+
     class Meta:
         verbose_name = 'Setor'
         verbose_name_plural = 'Setores'

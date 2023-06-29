@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     # Third Apps
     'bootstrap5',
     'django_extensions',
+    'rest_framework',
+    'rest_framework_gis',
+    'django_filters',
     # Apps
     'urbansig.core',
     'urbansig.cadastro',
