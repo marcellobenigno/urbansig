@@ -1,9 +1,11 @@
-from rest_framework import serializers
+from rest_framework_gis.serializers import GeoFeatureModelSerializer
 
 from . import models
 
 
-class SetorSerializer(serializers.ModelSerializer):
+class SetorSerializer(GeoFeatureModelSerializer):
     class Meta:
         model = models.Setor
+        geo_field = 'geom'
+
         fields = ['id', 'num_setor', 'bounds']

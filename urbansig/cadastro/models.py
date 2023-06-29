@@ -10,13 +10,15 @@ class Setor(BaseModel):
     def __str__(self):
         return self.num_setor
 
+    @property
     def bounds(self):
-        xmin, ymin, xmax, ymax = self.geom.extent
-        return [[ymin, xmin], [ymax, xmax]]
+        minlng, minlat, maxlng, maxlat = self.geom.extent
+        return [[minlat, minlng], [maxlat, maxlng]]
 
     class Meta:
         verbose_name = 'Setor'
         verbose_name_plural = 'Setores'
+        ordering = ['num_setor']
 
 
 class Quadra(BaseModel):
