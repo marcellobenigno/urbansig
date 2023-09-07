@@ -29,8 +29,8 @@
                     </li>
                     {% if request.user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link {% if url_name == 'imovel_list' %}active{% endif %}"
-                               href="{% url 'cadastro:imovel_list' %}">
+                            <a class="nav-link {% if url_name == 'lote_list' %}active{% endif %}"
+                               href="{% url 'cadastro:lote_list' %}">
                                 <i class="fa-solid fa-list"></i>
                                 Relação dos Imóveis
                             </a>

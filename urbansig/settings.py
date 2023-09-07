@@ -129,7 +129,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # ------------- Auth -------------
 LOGIN_URL = 'seguranca:login'
-LOGIN_REDIRECT_URL = 'cadastro:imovel_list'
+LOGIN_REDIRECT_URL = 'cadastro:lote_list'
 LOGOUT_REDIRECT_URL = 'core:index'
 
 # GEOSERVER

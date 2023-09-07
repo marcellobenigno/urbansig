@@ -1,5 +1,12 @@
-from django.shortcuts import render
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views import generic
+
+from . import models
 
 
-def imovel_list(request):
-    return render(request, 'cadastro/imovel_list.html')
+class LoteListView(LoginRequiredMixin, generic.ListView):
+    model = models.Lote
+    paginate_by = 12
+
+
+lote_list = LoteListView.as_view()

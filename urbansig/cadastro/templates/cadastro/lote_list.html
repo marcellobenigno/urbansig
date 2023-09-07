@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load bootstrap5 %}
 
 {% block content %}
     <div class="container-fluid">
@@ -56,7 +57,6 @@
                                     <thead class="table-light">
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Código</th>
                                         <th scope="col">Setor</th>
                                         <th scope="col">Quadra</th>
                                         <th scope="col">Lote</th>
@@ -64,50 +64,32 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>123456</td>
-                                        <td>01</td>
-                                        <td>02</td>
-                                        <td>245</td>
-                                        <td>
-                                            <a href="imovel_detail.html" class="btn btn-primary" role="button">
-                                                <i class="fa fa-info-circle"></i>
-                                            </a>
-                                            <a href="#" class="btn btn-warning" role="button">
-                                                <i class="fa-solid fa-pen-to-square"></i>
-                                            </a>
+                                    {% for object in object_list %}
+                                        <tr>
+                                            <th scope="row">{{ forloop.counter }}</th>
+                                            <td>{{ object.quadra.setor }}</td>
+                                            <td>{{ object.quadra }}</td>
+                                            <td>{{ object.num_lote }}</td>
+                                            <td>
+                                                <a href="imovel_detail.html" class="btn btn-primary" role="button">
+                                                    <i class="fa fa-info-circle"></i>
+                                                </a>
+                                                <a href="#" class="btn btn-warning" role="button">
+                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                </a>
 
-                                            <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                                    data-bs-target="#exampleModal">
-                                                <i class="fa-solid fa-trash"></i>
-                                            </button>
-
-
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>543260</td>
-                                        <td>05</td>
-                                        <td>12</td>
-                                        <td>102-A</td>
-                                        <td>
-                                            <a href="#" class="btn btn-primary" role="button">
-                                                <i class="fa fa-info-circle"></i>
-                                            </a>
-                                            <a href="#" class="btn btn-warning" role="button">
-                                                <i class="fa-solid fa-pen-to-square"></i>
-                                            </a>
-                                            <a href="#" class="btn btn-danger" role="button">
-                                                <i class="fa-solid fa-trash"></i>
-                                            </a>
-
-                                        </td>
-                                    </tr>
+                                                <!-- Button trigger modal -->
+                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                        data-bs-target="#exampleModal">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
                                     </tbody>
                                 </table>
+
+                                {% bootstrap_pagination page_obj %}
 
 
                                 <!-- Modal -->
@@ -138,15 +120,7 @@
                                     </div>
                                 </div>
 
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination">
-                                        <li class="page-item"><a class="page-link" href="#"> << </a></li>
-                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item"><a class="page-link" href="#"> >> </a></li>
-                                    </ul>
-                                </nav>
+
                             </div>
                         </div>
                     </div>

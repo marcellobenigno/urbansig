@@ -5,5 +5,5 @@ from . import views as v
 app_name = 'cadastro'
 
 urlpatterns = [
-    path('', v.imovel_list, name='imovel_list'),
+    path('', v.lote_list, name='lote_list'),
 ]
