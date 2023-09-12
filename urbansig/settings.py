@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     # Third Apps
     'bootstrap5',
     'django_extensions',
+    'leaflet',
     # Apps
     'urbansig.core',
     'urbansig.cadastro',
@@ -134,3 +135,18 @@ LOGOUT_REDIRECT_URL = 'core:index'
 
 # GEOSERVER
 GEOSERVER = config('GEOSERVER')
+
+LEAFLET_CONFIG = {
+    'SPATIAL_EXTENT': (
+        -51.71710968017579, -19.09298275464127,
+        -51.74629211425781, -19.13726237051753
+
+    ),
+    'TILES': [
+        ('GSatellite',
+         'http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}',
+         {'attribution': '&copy; Google'}),
+        ('GStreets', 'http://www.google.cn/maps/vt?lyrs=m@189&gl=cn&x={x}&y={y}&z={z}',
+         {'attribution': '&copy; Google'})
+    ]
+}

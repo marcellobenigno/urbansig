@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% load static core_tags bootstrap5 leaflet_tags %}
+
+{% block extra_css %}
+    {% leaflet_css plugins="forms" %}
+    {{ form.media.css }}
+
+    <style>
+        .leaflet-container { /* all maps */
+            width: 100%;
+            height: 600px;
+        }
+    </style>
+
+{% endblock extra_css %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 mt-4">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa-solid fa-plus-circle"></i>
+                        Novo Imóvel
+                    </div>
+                    <div class="card-body">
+                        <form action="" method="post">
+                            {% csrf_token %}
+
+                            {% bootstrap_form form %}
+
+                            <div class="col-md-12">
+                                <a href="{% url 'cadastro:lote_list' %}" class="btn btn-secondary mt-4">
+                                    <i class="fa-solid fa-arrow-left"></i>
+                                    Voltar
+                                </a>
+                                <button type="submit" class="btn btn-primary mt-4">
+                                    <i class="fa-solid fa-save" aria-hidden="true"></i>
+                                    Salvar
+                                </button>
+                            </div>
+                        </form>
+
+                        <input type="hidden" id="geoserver" value="{% settings_value "GEOSERVER" %}">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block extra_js %}
+    {% leaflet_js plugins="forms" %}
+    <script src="{% static 'js/layers.js' %}"></script>
+    <script>
+        loteGeomField = L.GeometryField.extend({
+            addTo: function (map) {
+                L.GeometryField.prototype.addTo.call(this, map);
+
+                lote.addTo(map);
+                quadra.addTo(map);
+                setor.addTo(map);
+
+                const lc = map.layerscontrol;
+
+                lc.addOverlay(lote, 'Lotes');
+                lc.addOverlay(quadra, 'Quadras');
+                lc.addOverlay(setor, 'Setores');
+
+            },
+        });
+    </script>
+
+{% endblock %}

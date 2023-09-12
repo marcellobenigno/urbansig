@@ -6,4 +6,5 @@ app_name = 'cadastro'
 
 urlpatterns = [
     path('', v.lote_list, name='lote_list'),
+    path('novo/', v.lote_create, name='lote_create'),
 ]
